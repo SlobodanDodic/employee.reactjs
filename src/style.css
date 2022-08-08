@@ -1,0 +1,57 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+html {
+  background-color: whitesmoke;
+}
+
+/* Shadow on right life of the leftbar */
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper {
+  box-shadow: -10px 0px 10px -7px #c1c1c1, 10px 0px 10px -7px #d9d9d9, 5px 5px 10px 5px rgb(0 0 0 / 0%) !important;
+}
+
+/* Moves the timeline on far left side */
+.css-ha3bif-MuiTimelineItem-root:before {
+  display: none;
+  content: "";
+  flex: 1;
+  padding: 6px 16px;
+}
+
+/* All input TextFields */
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 200px !important;
+}
+
+/* icon on the right side of every DatePicker */
+.css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
+  color: #0000006b !important;
+}
+
+/* label input text color on every DatePicker */
+.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root.Mui-error {
+  color: #626262 !important;
+}
+
+/* border on every DatePicker */
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root.Mui-error .MuiOutlinedInput-notchedOutline {
+  border-color: #bdbdbd !important;
+}
+
+/* Links in Leftbar */
+.sideLinksStyles {
+  display: contents;
+  color: #212121;
+  text-decoration: none;
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createEmployee } from "../Redux/features/employees/employeesSlice";
+import { useNavigate } from "react-router-dom";
 
 import Container from "@mui/material/Container";
 import Grid from "@mui/material/Grid";
@@ -18,12 +19,14 @@ import { initialState } from "../components/initialState";
 export default function AddEdit() {
   const [employee, setEmployee] = useState(initialState);
 
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const onSubmit = (e) => {
     e.preventDefault();
-
     dispatch(createEmployee(employee));
+    navigate("/allemployees");
   };
 
   const validateInputs =

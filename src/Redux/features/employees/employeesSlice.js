@@ -46,7 +46,7 @@ export const deleteEmployee = createAsyncThunk("employees/delete", async (id, th
 });
 
 export const employeesSlice = createSlice({
-  name: "employee",
+  name: "employees",
   initialState,
   reducers: {
     reset: (state) => initialState,
@@ -59,7 +59,7 @@ export const employeesSlice = createSlice({
       .addCase(createEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.employees.push([action.payload]);
+        Array.from(state.employees).push([action.payload]);
       })
       .addCase(createEmployee.rejected, (state, action) => {
         state.isLoading = false;
@@ -85,7 +85,7 @@ export const employeesSlice = createSlice({
       .addCase(deleteEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.employees = state.employees.filter((employee) => employee._id !== action.payload.id);
+        state.employees = Array.from(state.employees).filter((employee) => employee._id !== action.payload.id);
       })
       .addCase(deleteEmployee.rejected, (state, action) => {
         state.isLoading = false;

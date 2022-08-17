@@ -14,20 +14,15 @@ import moment from "moment";
 export default function EmployeesTable() {
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
-  const { employee, employees, isLoading } = useSelector((state) => state.employees);
+  const { employees, isLoading } = useSelector((state) => state.employees);
   const rows = employees.employees;
 
   useEffect(() => {
     dispatch(getEmployees());
   }, [dispatch, user]);
 
-  const handleDelete = () => {
-    dispatch(deleteEmployee(employee._id));
-    console.log(employee._id);
-  };
-
   const columns = [
-    // { field: "_id", headerName: "ID", width: 50, hide: true },
+    { field: "_id", headerName: "ID", width: 50, hide: true },
     { field: "name", headerName: "Name", flex: 1 },
     { field: "jmbg", headerName: "Jmbg", flex: 1 },
     {
@@ -65,12 +60,21 @@ export default function EmployeesTable() {
       headerName: "Edit / Delete",
       width: 170,
       disableExport: true,
-      renderCell: () => (
+      renderCell: (employees) => (
         <Stack direction="row" alignItems="center" spacing={1}>
           <Button variant="outlined" size="small" color="primary" startIcon={<EditIcon />}>
             Edit
           </Button>
-          <Button onClick={handleDelete} variant="outlined" size="small" color="error" endIcon={<DeleteIcon />}>
+          <Button
+            onClick={() => {
+              dispatch(deleteEmployee(employees.id));
+              window.location.reload();
+            }}
+            variant="outlined"
+            size="small"
+            color="error"
+            endIcon={<DeleteIcon />}
+          >
             Del
           </Button>
         </Stack>

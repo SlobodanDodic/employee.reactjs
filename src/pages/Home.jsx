@@ -107,7 +107,7 @@ export default function Home() {
           </TimelineSeparator>
           <TimelineContent>
             <Link to={"/"} className={classes.sideLinksStyles}>
-              <span style={{ textDecoration: "underline", fontStyle: "italic" }}>Benefits info</span> - Provides a view
+              <span style={{ textDecoration: "underline", fontStyle: "italic" }}>Benefit infos</span> - Provides a view
               of all benefits that employee use
             </Link>
           </TimelineContent>

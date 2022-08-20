@@ -34,6 +34,10 @@ html {
   width: 200px !important;
 }
 
+.css-1f2kw6w-MuiContainer-root {
+  max-width: 1400px !important;
+}
+
 /* icon on the right side of every DatePicker */
 .css-1yq5fb3-MuiButtonBase-root-MuiIconButton-root {
   color: #0000006b !important;
@@ -54,4 +58,9 @@ html {
   display: contents;
   color: #212121;
   text-decoration: none;
+}
+
+/* Chip width */
+.css-6od3lo-MuiChip-label {
+  width: 155px;
 }

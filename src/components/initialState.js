@@ -29,14 +29,17 @@ export const initialState = {
 //   skills,
 //   birthday,
 //   contract,
+
 //   bankAccountOne,
 //   bankAccountTwo,
 //   paycheck,
 //   bonus,
+
 //   eyes,
 //   safety,
 //   fire,
 //   firstAid,
+
 //   benefitUser,
 //   healthDate,
 //   fitpassDate,

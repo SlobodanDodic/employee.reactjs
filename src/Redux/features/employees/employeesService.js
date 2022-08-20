@@ -26,7 +26,7 @@ const getEmployees = async (token) => {
   return response.data;
 };
 
-// Delete user goal
+// Delete employee
 const deleteEmployee = async (employeeId, token) => {
   const config = {
     headers: {
@@ -38,10 +38,23 @@ const deleteEmployee = async (employeeId, token) => {
   return response.data;
 };
 
+// Edit employee
+const editEmployee = async (employeeId, employeeData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(API_URL + "employees/" + employeeId, employeeData, config);
+
+  return response.data;
+};
+
 const employeesService = {
   createEmployee,
   getEmployees,
   deleteEmployee,
+  editEmployee,
 };
 
 export default employeesService;

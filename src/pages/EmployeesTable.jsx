@@ -1,18 +1,23 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getEmployees, deleteEmployee } from "../Redux/features/employees/employeesSlice";
+import { getEmployees } from "../Redux/features/employees/employeesSlice";
+// import { getEmployees, deleteEmployee, editEmployee } from "../Redux/features/employees/employeesSlice";
 import { DataGrid, GridToolbar, gridClasses } from "@mui/x-data-grid";
 import Spinner from "../components/Spinner";
 import { grey } from "@mui/material/colors";
+import { Link } from "react-router-dom";
 
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
-import EditIcon from "@mui/icons-material/Edit";
+// import DeleteIcon from "@mui/icons-material/Delete";
+// import EditIcon from "@mui/icons-material/Edit";
+import VisibilityIcon from "@mui/icons-material/Visibility";
+
 import Stack from "@mui/material/Stack";
 import moment from "moment";
 
 export default function EmployeesTable() {
   const dispatch = useDispatch();
+
   const { user } = useSelector((state) => state.auth);
   const { employees, isLoading } = useSelector((state) => state.employees);
   const rows = employees.employees;
@@ -23,7 +28,7 @@ export default function EmployeesTable() {
 
   const columns = [
     { field: "_id", headerName: "ID", width: 50, hide: true },
-    { field: "name", headerName: "Name", flex: 1 },
+    { field: "name", headerName: "Name", flex: 1.25 },
     { field: "jmbg", headerName: "Jmbg", flex: 1 },
     {
       field: "contract",
@@ -56,15 +61,35 @@ export default function EmployeesTable() {
       valueFormatter: (params) => moment(params?.value).format("DD.MMM YYYY"),
     },
     {
-      field: "edit",
-      headerName: "Edit / Delete",
-      width: 170,
+      field: "view",
+      headerName: "View",
+      flex: 1,
       disableExport: true,
       renderCell: (employees) => (
         <Stack direction="row" alignItems="center" spacing={1}>
-          <Button variant="outlined" size="small" color="primary" startIcon={<EditIcon />}>
+          <Button
+            component={Link}
+            to={`/allemployees/${employees.id}`}
+            startIcon={<VisibilityIcon />}
+            variant="outlined"
+            size="small"
+            color="primary"
+          >
+            View
+          </Button>
+
+          {/* <Button
+            onClick={() => {
+              dispatch(editEmployee(employees.id));
+            }}
+            variant="outlined"
+            size="small"
+            color="success"
+            startIcon={<EditIcon />}
+          >
             Edit
           </Button>
+
           <Button
             onClick={() => {
               dispatch(deleteEmployee(employees.id));
@@ -76,7 +101,7 @@ export default function EmployeesTable() {
             endIcon={<DeleteIcon />}
           >
             Del
-          </Button>
+          </Button> */}
         </Stack>
       ),
     },

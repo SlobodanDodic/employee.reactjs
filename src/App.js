@@ -15,6 +15,7 @@ import Topbar from "./components/TopLeftBars/Topbar";
 import Leftbar from "./components/TopLeftBars/Leftbar";
 import Home from "./pages/Home";
 import AddEdit from "./pages/AddEdit";
+import ViewEmployee from "./pages/ViewEmployee";
 import EmployeesTable from "./pages/EmployeesTable";
 
 import PrivateRoutes from "./components/PrivateRoutes";
@@ -62,6 +63,7 @@ export default function App() {
                   <Route path="/" element={<Home />} />
                   <Route path="/addedit" element={<AddEdit />} />
                   <Route path="/allemployees" element={<EmployeesTable />} />
+                  <Route path="allemployees/:employeeId" element={<ViewEmployee />} />
                   <Route path="/addedit/:id" element={<AddEdit />} />
                 </Route>
               </Routes>

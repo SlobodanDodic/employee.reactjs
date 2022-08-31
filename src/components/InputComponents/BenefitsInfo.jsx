@@ -7,7 +7,7 @@ import { TextareaAutosize } from "@mui/base";
 export default function BenefitsInfo({ employee, setEmployee }) {
   return (
     <Box mt={3} sx={{ textAlign: "center" }}>
-      <Stack justifyContent="center" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <TextField
           required
           name="benefitUser"
@@ -37,7 +37,7 @@ export default function BenefitsInfo({ employee, setEmployee }) {
         />
       </Stack>
 
-      <Stack justifyContent="center" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <TextareaAutosize
           required
           name="comment"

@@ -55,7 +55,7 @@ export default function AddEdit() {
         <BenefitsInfo employee={employee} setEmployee={setEmployee} />
         <hr />
 
-        <Box sx={{ textAlign: "center" }}>
+        <Box>
           {validateInputs && validateDates ? (
             <Button
               size="large"

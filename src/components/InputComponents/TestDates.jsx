@@ -5,7 +5,7 @@ import Box from "@mui/material/Box";
 export default function TestDates({ employee, setEmployee }) {
   return (
     <Box mt={3} sx={{ textAlign: "center" }}>
-      <Stack justifyContent="center" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <AtomDate
           label="Eyes Check Date"
           value={employee.eyes}

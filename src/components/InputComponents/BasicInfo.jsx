@@ -11,7 +11,7 @@ export default function BasicInfo({ employee, setEmployee }) {
 
   return (
     <Box sx={{ textAlign: "center" }}>
-      <Stack justifyContent="center" alignItems="center" mb={2} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={2} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <TextField
           required
           name="name"
@@ -63,7 +63,7 @@ export default function BasicInfo({ employee, setEmployee }) {
         />
       </Stack>
 
-      <Stack justifyContent="center" alignItems="center" mb={4} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={4} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <AtomDate
           label="Birthday"
           value={employee.birthday}
@@ -83,7 +83,7 @@ export default function BasicInfo({ employee, setEmployee }) {
         />
       </Stack>
 
-      <Stack justifyContent="center" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
+      <Stack justifyContent="flex-start" alignItems="center" mb={3} spacing={2} direction={{ xs: "column", sm: "row" }}>
         <NumberFormat
           required
           label="💳 First account"
@@ -121,26 +121,26 @@ export default function BasicInfo({ employee, setEmployee }) {
         />
 
         <NumberFormat
+          customInput={TextField}
+          helperText=" "
           required
           label="💰 Paycheck"
-          customInput={TextField}
           value={employee.bonus}
           suffix={" €"}
           thousandSeparator="."
           decimalSeparator=","
-          helperText=" "
           onChange={(e) => setEmployee({ ...employee, bonus: e.target.value.replace(/\D/g, "") })}
         />
 
         <NumberFormat
+          customInput={TextField}
+          helperText=" "
           required
           label="💰 Bonus"
-          customInput={TextField}
           value={employee.paycheck}
           suffix={" €"}
           thousandSeparator="."
           decimalSeparator=","
-          helperText=" "
           onChange={(e) => setEmployee({ ...employee, paycheck: e.target.value.replace(/\D/g, "") })}
         />
       </Stack>

@@ -45,11 +45,23 @@ export const deleteEmployee = createAsyncThunk("employees/delete", async (id, th
   }
 });
 
-// Edit employee
-export const editEmployee = createAsyncThunk("employees/edit", async (id, thunkAPI) => {
+// View employee
+export const viewEmployee = createAsyncThunk("employees/viewEmployee", async (id, thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
-    return await employeesService.editEmployee(id, token);
+    return await employeesService.viewEmployee(id, token);
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
+// Edit employee
+export const editEmployee = createAsyncThunk("employees/edit", async (employeeData, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    return await employeesService.editEmployee(employeeData, token);
   } catch (error) {
     const message =
       (error.response && error.response.data && error.response.data.message) || error.message || error.toString();
@@ -104,13 +116,28 @@ export const employeesSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(viewEmployee.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(viewEmployee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.employees = Array.from(state.employees).find((employee) => employee._id === action.payload.id);
+      })
+      .addCase(viewEmployee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(editEmployee.pending, (state) => {
         state.isLoading = true;
       })
       .addCase(editEmployee.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccess = true;
-        state.employees = state.employees.find((employee) => employee._id === action.payload.id);
+        state.employees = Array.from(state.employees).map((employee) =>
+          employee._id === action.payload.id ? action.payload : employee
+        );
       })
       .addCase(editEmployee.rejected, (state, action) => {
         state.isLoading = false;

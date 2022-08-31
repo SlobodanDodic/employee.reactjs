@@ -38,14 +38,26 @@ const deleteEmployee = async (employeeId, token) => {
   return response.data;
 };
 
-// Edit employee
-const editEmployee = async (employeeId, employeeData, token) => {
+// View employee
+const viewEmployee = async (employeeId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-  const response = await axios.put(API_URL + "employees/" + employeeId, employeeData, config);
+  const response = await axios.get(API_URL + "employees/" + employeeId, config);
+
+  return response.data;
+};
+
+// Edit employee
+const editEmployee = async (employeeData, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.put(API_URL + "employees/" + employeeData._id, employeeData, config);
 
   return response.data;
 };
@@ -55,6 +67,7 @@ const employeesService = {
   getEmployees,
   deleteEmployee,
   editEmployee,
+  viewEmployee,
 };
 
 export default employeesService;

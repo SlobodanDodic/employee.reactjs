@@ -40,7 +40,13 @@ export default function Buttons({ employeeId, employee }) {
 
   return (
     <Divider sx={{ margin: "50px 0" }}>
-      <Button variant="outlined" color="success" startIcon={<EditIcon />} sx={{ margin: "0 20px" }}>
+      <Button
+        onClick={() => navigate(`/edit/${employeeId}`)}
+        variant="outlined"
+        color="success"
+        startIcon={<EditIcon />}
+        sx={{ margin: "0 20px" }}
+      >
         Edit
       </Button>
 

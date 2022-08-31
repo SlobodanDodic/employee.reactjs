@@ -3,7 +3,7 @@ import List from "@mui/material/List";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import { mainListItems, secondaryListItems } from "./LeftbarList";
+import { mainListItems, thirdListItems } from "./LeftbarList";
 import { Drawer } from "./BarStyles";
 
 export default function Leftbar({ openToggle, onClick }) {
@@ -19,8 +19,10 @@ export default function Leftbar({ openToggle, onClick }) {
 
       <List component="nav">
         {mainListItems}
+        {/* <Divider sx={{ my: 1 }} />
+        {secondaryListItems} */}
         <Divider sx={{ my: 1 }} />
-        {secondaryListItems}
+        {thirdListItems}
       </List>
     </Drawer>
   );

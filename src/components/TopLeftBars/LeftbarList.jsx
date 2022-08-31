@@ -16,6 +16,8 @@ import SportsMotorsportsIcon from "@mui/icons-material/SportsMotorsports";
 import LocalFireDepartmentIcon from "@mui/icons-material/LocalFireDepartment";
 import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
 
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+
 export const mainListItems = (
   <>
     <ListSubheader component="div" inset color="primary">
@@ -46,15 +48,6 @@ export const mainListItems = (
           <PersonAddIcon />
         </ListItemIcon>
         <ListItemText primary="Add Employee" />
-      </ListItemButton>
-    </Link>
-
-    <Link to={"/"} className="sideLinksStyles">
-      <ListItemButton>
-        <ListItemIcon>
-          <LayersIcon />
-        </ListItemIcon>
-        <ListItemText primary="Additional Info" />
       </ListItemButton>
     </Link>
   </>
@@ -93,5 +86,31 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="First aid test" />
     </ListItemButton>
+  </>
+);
+
+export const thirdListItems = (
+  <>
+    <ListSubheader component="div" inset color="primary">
+      Company reports
+    </ListSubheader>
+
+    <Link to={"/additinalRaports"} className="sideLinksStyles">
+      <ListItemButton>
+        <ListItemIcon>
+          <LayersIcon />
+        </ListItemIcon>
+        <ListItemText primary="Additional reports" />
+      </ListItemButton>
+    </Link>
+
+    <Link to={"/paycheckRaports"} className="sideLinksStyles">
+      <ListItemButton>
+        <ListItemIcon>
+          <AccountBalanceIcon />
+        </ListItemIcon>
+        <ListItemText primary="Paycheck reports" />
+      </ListItemButton>
+    </Link>
   </>
 );

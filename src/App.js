@@ -20,6 +20,8 @@ import ViewEmployee from "./pages/ViewEmployee";
 import EmployeesTable from "./pages/EmployeesTable";
 
 import PrivateRoutes from "./components/PrivateRoutes";
+import AdditionalRaports from "./components/ViewComponents/AdditionalRaports";
+import PaycheckRaports from "./components/ViewComponents/PaycheckRaports";
 
 export default function App() {
   const [openToggle, setOpenToggle] = useState(true);
@@ -66,6 +68,9 @@ export default function App() {
                   <Route path="/allemployees" element={<EmployeesTable />} />
                   <Route path="allemployees/:employeeId" element={<ViewEmployee />} />
                   <Route path="/edit/:employeeId" element={<Edit />} />
+
+                  <Route path="/additinalRaports" element={<AdditionalRaports />} />
+                  <Route path="/paycheckRaports" element={<PaycheckRaports />} />
                 </Route>
               </Routes>
             </Container>
